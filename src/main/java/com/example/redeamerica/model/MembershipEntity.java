@@ -24,9 +24,6 @@ public class MembershipEntity {
     private UserEntity user;
 
     @NotBlank
-    private String country;
-
-    @NotBlank
     private String address;
 
     @NotBlank
@@ -51,5 +48,5 @@ public class MembershipEntity {
 
     @NotBlank
     @Column(name = "request_status")
-    private String requestStatus;
+    private ERequestStatus requestStatus;
 }
