@@ -49,8 +49,8 @@ public class UserEntity implements UserDetails {
     @Enumerated(EnumType.STRING)
     private ERole roles;
 
-//    @OneToMany(mappedBy = "userId", cascade = CascadeType.ALL)
-//    private List<PostEntity> posts;
+    @OneToMany(mappedBy = "userId", cascade = CascadeType.ALL)
+ private List<PostEntity> posts;
 
 
 
