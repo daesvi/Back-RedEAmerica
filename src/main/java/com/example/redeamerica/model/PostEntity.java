@@ -23,15 +23,17 @@ public class PostEntity {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private UserEntity userId;
-
     @NotBlank
     private String content;
 
     private String mediaUrl;
+
+    private ECategory category;
 
     @NotBlank
     private LocalDateTime timestamp;
 
     @NotBlank
     private String country;
+
 }
