@@ -22,7 +22,7 @@ public class HomeController {
 
     @GetMapping()
     public ResponseEntity<ArrayList<PostEntity>> getAllPosts(){
-        ArrayList<PostEntity> postCreated = postService.getAllFlights();
-        return ResponseEntity.status(HttpStatus.OK).body(postCreated);
+        ArrayList<PostEntity> listPosts = postService.getAllPosts();
+        return ResponseEntity.status(HttpStatus.OK).body(listPosts);
     }
 }

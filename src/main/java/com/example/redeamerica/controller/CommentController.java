@@ -8,10 +8,9 @@ import com.example.redeamerica.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
 
 @RestController
 @RequestMapping("/forum")
@@ -28,5 +27,11 @@ public class CommentController {
         } catch (IllegalArgumentException ex) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
         }
+    }
+
+    @GetMapping("{id}")
+    public ResponseEntity<ArrayList<CommentEntity>> getAllComments(@PathVariable Long id){
+        ArrayList<CommentEntity> listComments = commentService.getAllComments(id);
+        return ResponseEntity.status(HttpStatus.OK).body(listComments);
     }
 }

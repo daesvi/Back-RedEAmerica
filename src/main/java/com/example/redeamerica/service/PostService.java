@@ -42,8 +42,8 @@ public class PostService {
 
 
 
-    public ArrayList<PostEntity> getAllFlights() {
-        // Returns a list of all flights in the database.
+    public ArrayList<PostEntity> getAllPosts() {
+        // Returns a list of all posts in the database.
         return (ArrayList<PostEntity>) postRepository.findAll();
     }
 
