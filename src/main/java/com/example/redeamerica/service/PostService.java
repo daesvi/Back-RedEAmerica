@@ -53,7 +53,7 @@ public class PostService {
         return (ArrayList<PostEntity>) postRepository.findByUserId(userFound.getId());
     }
 
-    private UserEntity getByEmailAuthenticated() {
+    public UserEntity getByEmailAuthenticated() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication != null && authentication.getPrincipal() instanceof UserDetails) {
             UserDetails userDetails = (UserDetails) authentication.getPrincipal();
