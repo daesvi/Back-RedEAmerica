@@ -50,7 +50,7 @@ public class UserEntity implements UserDetails {
     private ERole roles;
 
     @OneToMany(mappedBy = "userId", cascade = CascadeType.ALL)
- private List<PostEntity> posts;
+    private List<PostEntity> posts;
 
 
 

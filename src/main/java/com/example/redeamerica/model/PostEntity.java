@@ -1,5 +1,7 @@
 package com.example.redeamerica.model;
 
+
+
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
@@ -20,18 +22,19 @@ public class PostEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private UserEntity userId;
+    private Long userId;
 
     @NotBlank
     private String content;
 
     private String mediaUrl;
 
-    @NotBlank
+    @Enumerated(EnumType.STRING)
+    private ECategory category;
+
     private LocalDateTime timestamp;
 
     @NotBlank
     private String country;
+
 }

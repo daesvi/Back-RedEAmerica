@@ -32,9 +32,13 @@ public class SecurityConfig {
                 .authorizeHttpRequests(authRequest->
                         authRequest
                                 .requestMatchers("auth/**").permitAll()
+                                .requestMatchers("blog/**", "api/**").authenticated()
+                                .requestMatchers("membership/**", "api/**").authenticated()
                                 .requestMatchers("api/**").hasAuthority("USER")
-
-                        )
+                                .requestMatchers("blog/**").hasAuthority("USER")
+                                .requestMatchers("membership/**").hasAuthority("USER")
+                                .anyRequest().permitAll()
+                )
                 .sessionManagement(sessionManager ->
                         sessionManager
                                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
