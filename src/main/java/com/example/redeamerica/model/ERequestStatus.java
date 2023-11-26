@@ -4,5 +4,7 @@ public enum ERequestStatus {
     PENDIENTE,
     APROBADO,
     RECHAZADO;
+
+
 }
 

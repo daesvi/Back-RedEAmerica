@@ -13,15 +13,12 @@ import lombok.NoArgsConstructor;
 @Builder
 @Entity
 @Table(name = "memberships")
-public class MembershipEntity {
+public class MembershipRequestEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @OneToOne
-    @JoinColumn(name = "user_id")
-    private UserEntity user;
+    private Long userId;
 
     @NotBlank
     private String address;
@@ -46,7 +43,9 @@ public class MembershipEntity {
     @Column(name = "url_education_certificate")
     private String urlEducationCertificate;
 
+    @Enumerated(EnumType.STRING)
     @NotBlank
     @Column(name = "request_status")
     private ERequestStatus requestStatus;
+
 }
