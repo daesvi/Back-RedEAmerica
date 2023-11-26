@@ -1,5 +1,6 @@
 package com.example.redeamerica.dto;
 
+import com.example.redeamerica.model.MembershipRequestEntity;
 import lombok.AllArgsConstructor;
 
 import lombok.Data;
@@ -15,6 +16,9 @@ public class MembershipRequestDTO {
     private String urlIdentificationScan;
     private String educationLevel;
     private String urlEducationCertificate;
+
+    public MembershipRequestDTO(MembershipRequestEntity membershipsolicitar) {
+    }
 }
 
 
