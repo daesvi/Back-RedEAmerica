@@ -20,17 +20,16 @@ public class PostEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private UserEntity userId;
+    private Long userId;
+
     @NotBlank
     private String content;
 
     private String mediaUrl;
 
+    @Enumerated(EnumType.STRING)
     private ECategory category;
 
-    @NotBlank
     private LocalDateTime timestamp;
 
     @NotBlank
