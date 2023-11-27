@@ -29,8 +29,8 @@ public class PostController {
 
     @GetMapping
     public ResponseEntity<ArrayList<PostEntity>> getPostsByUser(){
-        ArrayList<PostEntity> postCreated = postService.getPostsByUser();
-        return ResponseEntity.status(HttpStatus.OK).body(postCreated);
+        ArrayList<PostEntity> postsList = postService.getPostsByUser();
+        return ResponseEntity.status(HttpStatus.OK).body(postsList);
     }
 
     @DeleteMapping("delete/{id}")

@@ -31,11 +31,14 @@ public class SecurityConfig {
                         csrf.disable())
                 .authorizeHttpRequests(authRequest->
                         authRequest
-                                .requestMatchers("auth/**").permitAll()
-                                .requestMatchers("blog/**", "api/**", "forum/**", "/membership/**").authenticated()
-                                .requestMatchers("api/**").hasAuthority("USER")
-                                .requestMatchers("blog/**").hasAuthority("USER")
-                                .anyRequest().permitAll()
+                                .requestMatchers("auth/**", "home/**").permitAll()
+                                .requestMatchers(
+                                        "api/**",
+                                        "blog/**",
+                                        "forum/**",
+                                        "membership/**").hasAuthority("REDEAMERICA")
+                                .requestMatchers("admin/**").hasAuthority("ADMIN")
+                                .anyRequest().authenticated()
                         )
                 .sessionManagement(sessionManager ->
                         sessionManager
