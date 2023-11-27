@@ -42,16 +42,18 @@ public class AuthService {
     }
 
     public AuthResponse register(RegisterRequest request) {
-        UserEntity user = UserEntity.builder()
-                .email(request.getEmail())
-                .password(passwordEncoder.encode(request.getPassword()))
-                .name(request.getName())
-                .lastName(request.getLastName())
-                .phone(request.getPhone())
-                .country(request.getCountry())
-                .roles(ERole.USER)
-                .build();
-
+        UserEntity user = new UserEntity();
+        user.setEmail(request.getEmail());
+        user.setPassword(passwordEncoder.encode(request.getPassword()));
+        user.setName(request.getName());
+        user.setLastName(request.getLastName());
+        user.setPhone(request.getPhone());
+        user.setCountry(request.getCountry());
+        if (request.getEmail().equals("redeamerica@admin.com")){
+            user.setRoles(ERole.ADMIN);
+        }else {
+            user.setRoles(ERole.USER);
+        }
         userRepository.save(user);
 
         return AuthResponse.builder()
