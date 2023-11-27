@@ -24,8 +24,6 @@ public class CommentService {
     CommentRepository commentRepository;
 
     public CommentEntity createComment(CommentDTO commentDTO){
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-
         UserEntity userFound = postService.getByEmailAuthenticated();
 
         CommentEntity newComment = new CommentEntity();
