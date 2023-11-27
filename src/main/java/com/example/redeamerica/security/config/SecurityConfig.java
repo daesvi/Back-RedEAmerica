@@ -31,9 +31,13 @@ public class SecurityConfig {
                         csrf.disable())
                 .authorizeHttpRequests(authRequest->
                         authRequest
-                                .requestMatchers("auth/**").permitAll()
-                                .requestMatchers("api/**").hasAuthority("USER")
-
+                                .requestMatchers("auth/**", "home/**").permitAll()
+                                .requestMatchers(
+                                        "api/**",
+                                        "blog/**",
+                                        "forum/**").hasAuthority("REDEAMERICA")
+                                .requestMatchers("admin/**").hasAuthority("ADMIN")
+                                .anyRequest().authenticated()
                         )
                 .sessionManagement(sessionManager ->
                         sessionManager

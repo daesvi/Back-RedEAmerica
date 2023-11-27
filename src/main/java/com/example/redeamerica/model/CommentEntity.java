@@ -22,11 +22,7 @@ public class CommentEntity {
     @NotBlank
     private String comment;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private UserEntity userId;
+    private Long userId;
 
-    @ManyToOne
-    @JoinColumn(name = "post_id")
-    private PostEntity postId;
+    private Long postId;
 }

@@ -27,23 +27,23 @@ public class UserEntity implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @NotBlank
+
     private String name;
 
-    @NotBlank
+
     private String lastName;
 
-    @NotBlank
-    @Email
+
+
     private String email;
 
-    @NotBlank
+
     private String phone;
 
-    @NotBlank
+
     private String password;
 
-    @NotBlank
+
     private String country;
 
     @Enumerated(EnumType.STRING)
