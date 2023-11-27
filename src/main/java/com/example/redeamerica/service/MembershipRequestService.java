@@ -31,6 +31,7 @@ public class MembershipRequestService {
 
         MembershipRequestEntity membershipRequest = new MembershipRequestEntity();
         membershipRequest.setUserId(userFound.getId());
+        membershipRequest.setTypeMembreship(membershipRequestDTO.getTypeMembreship());
         membershipRequest.setAddress(membershipRequestDTO.getAddress());
         membershipRequest.setIdentificationType(membershipRequestDTO.getIdentificationType());
         membershipRequest.setIdentificationNumber(membershipRequestDTO.getIdentificationNumber());

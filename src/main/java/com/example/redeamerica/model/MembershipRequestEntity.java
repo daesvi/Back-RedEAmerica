@@ -21,6 +21,7 @@ public class MembershipRequestEntity {
 
     private Long userId;
 
+    private String typeMembreship;
 
     private String address;
 

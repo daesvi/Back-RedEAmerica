@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 @Builder
 public class MembershipRequestDTO {
 
+    private String typeMembreship;
     private String address;
     private String identificationType;
     private String identificationNumber;

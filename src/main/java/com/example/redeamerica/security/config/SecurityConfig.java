@@ -35,8 +35,7 @@ public class SecurityConfig {
                                 .requestMatchers(
                                         "api/**",
                                         "blog/**",
-                                        "forum/**",
-                                        "membership/**").hasAuthority("REDEAMERICA")
+                                        "forum/**").hasAuthority("REDEAMERICA")
                                 .requestMatchers("admin/**").hasAuthority("ADMIN")
                                 .anyRequest().authenticated()
                         )
