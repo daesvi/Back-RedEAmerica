@@ -1,17 +1,13 @@
 package com.example.redeamerica.controller;
 
-import com.example.redeamerica.dto.RedeamericaDTO;
-import com.example.redeamerica.dto.UserDTO;
+import com.example.redeamerica.dto.*;
 import com.example.redeamerica.model.PostEntity;
 import com.example.redeamerica.model.UserEntity;
 import com.example.redeamerica.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 
@@ -32,5 +28,17 @@ public class UserController {
     public ResponseEntity<?> getProfileInfoRedeamerica(){
         RedeamericaDTO user = userService.getProfileInfoRedeamerica();
         return ResponseEntity.status(HttpStatus.OK).body(user);
+    }
+
+    @PutMapping("update/user")
+    public ResponseEntity<?> updateUserInfo(@RequestBody UserUpdateDTO userUpdateDTO){
+        String response = userService.updateUserInfo(userUpdateDTO);
+        return ResponseEntity.status(HttpStatus.OK).body(response);
+    }
+
+    @PutMapping("update/redeamerica")
+    public ResponseEntity<?> updateUserRedeamerica(@RequestBody RedeamericaUpdateDTO redeamericaUpdateDTO){
+        String response = userService.updateUserRedeamerica(redeamericaUpdateDTO);
+        return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 }

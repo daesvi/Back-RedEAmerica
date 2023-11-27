@@ -1,7 +1,9 @@
 package com.example.redeamerica.service;
 
 import com.example.redeamerica.dto.RedeamericaDTO;
+import com.example.redeamerica.dto.RedeamericaUpdateDTO;
 import com.example.redeamerica.dto.UserDTO;
+import com.example.redeamerica.dto.UserUpdateDTO;
 import com.example.redeamerica.model.MembershipRequestEntity;
 import com.example.redeamerica.model.UserEntity;
 import com.example.redeamerica.repository.MembershipRequestRepository;
@@ -61,5 +63,47 @@ public class UserService {
         userBuild.setEducationLevel(membershipRequest.getEducationLevel());
         userBuild.setUrlEducationCertificate(membershipRequest.getUrlEducationCertificate());
         return userBuild;
+    }
+
+    public String updateUserInfo (UserUpdateDTO userUpdateDTO){
+        UserEntity userFound = postService.getByEmailAuthenticated();
+
+        userFound.setName(userUpdateDTO.getName());
+        userFound.setLastName(userUpdateDTO.getLastName());
+        userFound.setEmail(userUpdateDTO.getEmail());
+        userFound.setCountry(userUpdateDTO.getCountry());
+        userFound.setPhone(userUpdateDTO.getPhone());
+        userFound.setPassword(userUpdateDTO.getPassword());
+
+        userRepository.save(userFound);
+        return "Información personal actualizada con éxito!";
+    }
+
+    public String updateUserRedeamerica (RedeamericaUpdateDTO redeamericaUpdateDTO){
+        UserEntity userFound = postService.getByEmailAuthenticated();
+
+        userFound.setName(redeamericaUpdateDTO.getName());
+        userFound.setLastName(redeamericaUpdateDTO.getLastName());
+        userFound.setEmail(redeamericaUpdateDTO.getEmail());
+        userFound.setCountry(redeamericaUpdateDTO.getCountry());
+        userFound.setPhone(redeamericaUpdateDTO.getPhone());
+        userFound.setPassword(redeamericaUpdateDTO.getPassword());
+
+        userRepository.save(userFound);
+
+        Long userId = userFound.getId();
+
+        MembershipRequestEntity membershipRequest = membershipRequestRepository.findByUserId(userId).orElseThrow();
+
+        membershipRequest.setAddress(redeamericaUpdateDTO.getAddress());
+        membershipRequest.setIdentificationType(redeamericaUpdateDTO.getIdentificationType());
+        membershipRequest.setIdentificationNumber(redeamericaUpdateDTO.getIdentificationNumber());
+        membershipRequest.setUrlIdentificationScan(redeamericaUpdateDTO.getUrlIdentificationScan());
+        membershipRequest.setEducationLevel(redeamericaUpdateDTO.getEducationLevel());
+        membershipRequest.setUrlEducationCertificate(redeamericaUpdateDTO.getUrlEducationCertificate());
+        membershipRequest.setTypeMembreship(redeamericaUpdateDTO.getTypeMembreship());
+
+        membershipRequestRepository.save(membershipRequest);
+        return "Información personal actualizada con éxito!";
     }
 }
