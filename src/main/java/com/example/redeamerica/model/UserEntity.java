@@ -30,22 +30,25 @@ public class UserEntity implements UserDetails {
     private long id;
     @OneToMany(mappedBy = "userEntity", cascade = CascadeType.ALL)
     private List<PostEntity> posts;
-    @NotBlank
+
+    @NotBlank(message = "Full name is required")
     private String fullName;
-    @NotBlank
+
+    @NotBlank(message = "Address is required")
     private String address;
-    @NotBlank
+
+    @NotBlank(message = "Name is required")
     private String name;
-    @NotBlank
+    @NotBlank(message = "Last name is required")
     private String lastName;
-    @NotBlank
-    @Email
+    @NotBlank(message = "Email is required")
+    @Email(message = "Invalid email format")
     private String email;
-    @NotBlank
+    @NotBlank(message = "Phone is required")
     private String phone;
-    @NotBlank
+    @NotBlank(message = "Password is required")
     private String password;
-    @NotBlank
+    @NotBlank(message = "Country is required")
     private String country;
     @Enumerated(EnumType.STRING)
     private ERole roles;

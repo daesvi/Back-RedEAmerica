@@ -31,7 +31,7 @@ public class PostService {
 
         PostEntity newPost = new PostEntity();
 
-        newPost.setUserId(userFound.getId());
+        newPost.setId(userFound.getId());
         newPost.setContent(postDTO.getContent());
         newPost.setMediaUrl(postDTO.getMediaUrl());
         //newPost.setCategory(postDTO.getCategory());

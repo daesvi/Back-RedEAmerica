@@ -14,7 +14,6 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Builder
 @Entity
-
 @Table(name = "posts")
 public class PostEntity {
 
@@ -24,15 +23,15 @@ public class PostEntity {
 
     @Column(name = "user_id", insertable = false, updatable = false)
     private Long userEntityId;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long userId;
-
-    @NotBlank
+    @NotBlank(message = "Content is required")
     private String content;
-    @NotBlank
+
+    @NotBlank(message = "Media URL is required")
     private String mediaUrl;
 
     @Enumerated(EnumType.STRING)
@@ -40,12 +39,6 @@ public class PostEntity {
 
     private LocalDateTime timestamp;
 
-    @NotBlank
+    @NotBlank(message = "Country is required")
     private String country;
-
-
-
-
-
-
 }
