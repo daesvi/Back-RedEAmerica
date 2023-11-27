@@ -1,6 +1,5 @@
 package com.example.redeamerica.controller;
 
-
 import com.example.redeamerica.security.auth.AuthResponse;
 import com.example.redeamerica.security.auth.LoginRequest;
 import com.example.redeamerica.security.auth.RegisterRequest;

@@ -23,6 +23,7 @@ public class PostService {
 
     @Autowired
     UserRepository userRepository;
+    private ArrayList<com.example.redeamerica.model.PostEntity> PostEntity;
 
     public PostEntity createPost (PostDTO postDTO){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -83,4 +84,7 @@ public class PostService {
         }
     }
 
+    public ArrayList<PostEntity> getAllPosts() {
+        return PostEntity ;
+    }
 }
