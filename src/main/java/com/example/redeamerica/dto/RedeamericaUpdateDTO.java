@@ -16,7 +16,6 @@ public class RedeamericaUpdateDTO {
     private String lastName;
     private String email;
     private String phone;
-    private String password;
     private String country;
 
     private String typeMembreship;

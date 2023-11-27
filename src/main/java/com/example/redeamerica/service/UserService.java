@@ -73,7 +73,6 @@ public class UserService {
         userFound.setEmail(userUpdateDTO.getEmail());
         userFound.setCountry(userUpdateDTO.getCountry());
         userFound.setPhone(userUpdateDTO.getPhone());
-        userFound.setPassword(userUpdateDTO.getPassword());
 
         userRepository.save(userFound);
         return "Información personal actualizada con éxito!";
@@ -87,7 +86,6 @@ public class UserService {
         userFound.setEmail(redeamericaUpdateDTO.getEmail());
         userFound.setCountry(redeamericaUpdateDTO.getCountry());
         userFound.setPhone(redeamericaUpdateDTO.getPhone());
-        userFound.setPassword(redeamericaUpdateDTO.getPassword());
 
         userRepository.save(userFound);
 

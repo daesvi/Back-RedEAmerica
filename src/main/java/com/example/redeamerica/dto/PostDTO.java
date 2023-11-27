@@ -1,6 +1,5 @@
 package com.example.redeamerica.dto;
 
-import com.example.redeamerica.model.ECategory;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -14,6 +13,6 @@ public class PostDTO {
 
     private String content;
     private String mediaUrl;
-    private ECategory category;
+    private String category;
     private String country;
 }

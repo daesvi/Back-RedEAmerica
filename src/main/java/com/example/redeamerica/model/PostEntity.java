@@ -22,17 +22,16 @@ public class PostEntity {
 
     private Long userId;
 
-    @NotBlank
+
     private String content;
 
     private String mediaUrl;
 
-    @Enumerated(EnumType.STRING)
-    private ECategory category;
+    private String category;
 
     private LocalDateTime timestamp;
 
-    @NotBlank
+
     private String country;
 
 }
