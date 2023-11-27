@@ -31,13 +31,13 @@ public class SecurityConfig {
                         csrf.disable())
                 .authorizeHttpRequests(authRequest->
                         authRequest
-                                .requestMatchers("auth/**", "home/**").permitAll()
                                 .requestMatchers(
                                         "api/**",
                                         "blog/**",
                                         "forum/**").hasAuthority("REDEAMERICA")
                                 .requestMatchers("admin/**").hasAuthority("ADMIN")
-                                .anyRequest().authenticated()
+                                .requestMatchers("/swagger-ui/**", "/v3/api-docs/**", "/swagger-ui.html").permitAll()
+                                .anyRequest().permitAll()
                         )
                 .sessionManagement(sessionManager ->
                         sessionManager
