@@ -5,13 +5,14 @@ import com.example.redeamerica.model.MembershipRequestEntity;
 import com.example.redeamerica.model.UserEntity;
 import com.example.redeamerica.repository.MembershipRequestRepository;
 import com.example.redeamerica.repository.UserRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
+
 import java.util.Optional;
 
 @Service
@@ -22,7 +23,7 @@ public class MembershipRequestService {
 
     @Autowired
     private UserRepository userRepository;
-
+    @Transactional
     public MembershipRequestEntity solicitarMembresia(MembershipRequestDTO membershipRequestDTO) {
         // Obtener la autenticación del contexto de seguridad
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -73,7 +74,7 @@ public class MembershipRequestService {
             // Verificar si la solicitud está pendiente
             if (request.getRequestStatus() == ERequestStatus.PENDIENTE) {
                 // Actualizar el estado de la solicitud a APROBADA
-                request.setRequestStatus(ERequestStatus.APROBADA);
+                request.setRequestStatus(ERequestStatus.APROBADO);
                 membershipRequestRepository.save(request);
             } else {
                 // Lanzar una excepción si la solicitud no está pendiente
@@ -84,7 +85,7 @@ public class MembershipRequestService {
             throw new IllegalArgumentException("Solicitud no encontrada con ID: " + requestId);
         }
     }
-
+    @Transactional
     // Método para rechazar una solicitud de membresía
     public void rechazarSolicitudMembresia(Long requestId) {
         // Obtener la solicitud de membresía por ID
@@ -97,7 +98,7 @@ public class MembershipRequestService {
             // Verificar si la solicitud está pendiente
             if (request.getRequestStatus() == ERequestStatus.PENDIENTE) {
                 // Actualizar el estado de la solicitud a RECHAZADA
-                request.setRequestStatus(ERequestStatus.RECHAZADA);
+                request.setRequestStatus(ERequestStatus.RECHAZADO);
                 membershipRequestRepository.save(request);
             } else {
                 // Lanzar una excepción si la solicitud no está pendiente

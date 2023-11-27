@@ -46,7 +46,7 @@ public class MembershipRequestEntity {
     @Enumerated(EnumType.STRING)
     @NotBlank
     @Column(name = "request_status")
-    @Enumerated(EnumType.STRING)
+
     private ERequestStatus requestStatus;
 
 }

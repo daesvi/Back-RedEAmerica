@@ -14,24 +14,38 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Builder
 @Entity
+
 @Table(name = "posts")
 public class PostEntity {
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private UserEntity userEntity;
+
+    @Column(name = "user_id", insertable = false, updatable = false)
+    private Long userEntityId;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private UserEntity userId;
+    private Long userId;
 
     @NotBlank
     private String content;
-
+    @NotBlank
     private String mediaUrl;
 
-    @NotBlank
+    @Enumerated(EnumType.STRING)
+    private ECategory category;
+
     private LocalDateTime timestamp;
 
     @NotBlank
     private String country;
+
+
+
+
+
+
 }
