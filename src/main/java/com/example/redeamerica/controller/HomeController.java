@@ -1,6 +1,5 @@
 package com.example.redeamerica.controller;
 
-import com.example.redeamerica.model.CommentEntity;
 import com.example.redeamerica.model.PostEntity;
 import com.example.redeamerica.service.PostService;
 import io.swagger.v3.oas.annotations.Operation;

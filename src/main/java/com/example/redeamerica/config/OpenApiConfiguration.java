@@ -8,8 +8,6 @@ import io.swagger.v3.oas.annotations.info.Info;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.security.SecurityScheme;
 import io.swagger.v3.oas.annotations.servers.Server;
-import io.swagger.v3.oas.models.OpenAPI;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @OpenAPIDefinition(
@@ -32,8 +30,7 @@ import org.springframework.context.annotation.Configuration;
                 ),
                 @Server(
                         description = "PROD ENV",
-                        // change the url when the api is deployed
-                        url = "https://prod.com"
+                        url = "http://54.175.151.202"
                 )
         },
         security = {

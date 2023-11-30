@@ -1,6 +1,5 @@
 package com.example.redeamerica.dto;
 
-import com.example.redeamerica.model.ERole;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
