@@ -1,37 +1,56 @@
 package com.example.redeamerica.config;
 
+import io.swagger.v3.oas.annotations.OpenAPIDefinition;
+import io.swagger.v3.oas.annotations.enums.SecuritySchemeIn;
+import io.swagger.v3.oas.annotations.enums.SecuritySchemeType;
+import io.swagger.v3.oas.annotations.info.Contact;
+import io.swagger.v3.oas.annotations.info.Info;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import io.swagger.v3.oas.annotations.security.SecurityScheme;
+import io.swagger.v3.oas.annotations.servers.Server;
 import io.swagger.v3.oas.models.OpenAPI;
-import io.swagger.v3.oas.models.info.Info;
-import io.swagger.v3.oas.models.servers.Server;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+@OpenAPIDefinition(
+        info = @Info(
+                contact = @Contact(
+                        name = "Daniel Villegas",
+                        email = "villegasdaniel4321@gmail.com",
+                        url = "https://github.com/daesvi"
+                ),
+                description = "This is redEAmerica, a platform where you can share knowledge and experiences with other users, adventure with us \n" +
+                        "\nWe don't just teach lines of code, we create lines of change! Welcome to the inclusive tech revolution.",
+                title = "RedEAmerica",
+                version = "1.0",
+                termsOfService = "Terms of service"
+        ),
+        servers = {
+                @Server(
+                        description = "Local ENV",
+                        url = "http://localhost:8080"
+                ),
+                @Server(
+                        description = "PROD ENV",
+                        // change the url when the api is deployed
+                        url = "https://prod.com"
+                )
+        },
+        security = {
+                @SecurityRequirement(
+                        name = "bearerAuth"
+                )
+        }
+)
+
+@SecurityScheme(
+        name = "bearerAuth",
+        description = "JWT auth",
+        scheme = "bearer",
+        type = SecuritySchemeType.HTTP,
+        bearerFormat = "JWT",
+        in = SecuritySchemeIn.HEADER
+)
 @Configuration
 public class OpenApiConfiguration {
-
-    @Bean
-    public OpenAPI combinedOpenAPI() {
-        OpenAPI openAPI1 = new OpenAPI()
-                .addServersItem(new Server().url("https://back-redeamerica-production.up.railway.app"));
-
-        OpenAPI openAPI2 = new OpenAPI()
-                .info(new Info()
-                        .title("Reservation Management System")
-                        .version("1.0.0")
-                        .description("This is a reservation management system API developed in Java with the Spring framework, which allows\n" +
-                                "\n" +
-                                " - Create airlines\n" + "\n" +
-                                " - Create users\n" + "\n" +
-                                " - Manage flights\n" + "\n" +
-                                " - Search flights by search criteria\n" + "\n" +
-                                " - Reserve a flight")
-                        .termsOfService("http:/swagger.io/terms/")
-                );
-
-        openAPI1.setInfo(openAPI2.getInfo());
-
-        return openAPI1;
-    }
-
-
 }

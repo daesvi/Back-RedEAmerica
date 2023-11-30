@@ -1,6 +1,7 @@
 package com.example.redeamerica.security.config;
 
 import com.example.redeamerica.security.jwt.JwtAuthenticationFilter;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -25,6 +26,7 @@ public class SecurityConfig {
 
     // Se configura los endpoint publicos y protegidos
     @Bean
+    @SecurityRequirement(name = "bearerAuth")
     public  SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
                 .csrf(csrf ->
@@ -32,11 +34,15 @@ public class SecurityConfig {
                 .authorizeHttpRequests(authRequest->
                         authRequest
                                 .requestMatchers(
-                                        "api/**",
                                         "blog/**",
-                                        "forum/**").hasAuthority("REDEAMERICA")
+                                        "forum").hasAuthority("REDEAMERICA")
                                 .requestMatchers("admin/**").hasAuthority("ADMIN")
-                                .requestMatchers("/swagger-ui/**", "/v3/api-docs/**", "/swagger-ui.html").permitAll()
+//                                .requestMatchers("/swagger-ui/**", "/v3/api-docs/**", "/swagger-ui.html").permitAll()
+                                .requestMatchers("membership",
+                                        "profile/**",
+                                        "admin/**",
+                                        "forum",
+                                        "blog/**").authenticated()
                                 .anyRequest().permitAll()
                         )
                 .sessionManagement(sessionManager ->
